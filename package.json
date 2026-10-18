@@ -1,6 +1,6 @@
 {
   "name": "coralbricks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open your coding agent on CoralBricks with isolated, CoralBricks-owned configuration.",
   "type": "module",
   "bin": {

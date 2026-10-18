@@ -99,8 +99,9 @@ function listen(handoff: Handoff): Promise<{ port: number; received: Promise<str
       return
     }
     deliver(url.searchParams.get('code')!)
-    // Back to the console, which says the terminal is connected.
-    res.writeHead(302, { Location: `${CONSOLE_ROOT}/cli/login?connected=1`, 'Cache-Control': 'no-store' }).end()
+    // Back to the console, which says the terminal is connected; the state lets the approving tab
+    // tell its own hand-off from any other.
+    res.writeHead(302, { Location: `${CONSOLE_ROOT}/cli/login?${new URLSearchParams({ connected: '1', state: handoff.state })}`, 'Cache-Control': 'no-store' }).end()
   })
   return new Promise((resolve, reject) => {
     server.once('error', reject)
