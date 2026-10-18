@@ -1,0 +1,47 @@
+{
+  "name": "coralbricks",
+  "version": "0.1.0",
+  "description": "Open your coding agent on CoralBricks with isolated, CoralBricks-owned configuration.",
+  "type": "module",
+  "bin": {
+    "coralbricks": "dist/cli.js"
+  },
+  "files": [
+    "dist/**/*.js",
+    "!dist/**/*.test.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json && node -e \"require('fs').chmodSync('dist/cli.js',0o755)\"",
+    "prepack": "npm run build",
+    "test": "npm run build && node scripts/test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "coralbricks",
+    "cli",
+    "coding-agent",
+    "claude",
+    "codex",
+    "opencode",
+    "pi",
+    "inference"
+  ],
+  "homepage": "https://www.coralbricks.ai/docs/cli",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coral-Bricks-AI/coralbricks-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Coral-Bricks-AI/coralbricks-cli/issues"
+  }
+}
