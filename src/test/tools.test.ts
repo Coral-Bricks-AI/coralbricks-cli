@@ -76,9 +76,9 @@ test('opencode: a config layer naming the model, key by reference', async () => 
 
 test('pi: a temporary agent dir with the provider, sessions kept', async () => {
   const plan = await findTool('pi')!.plan(ctx('glm-5.3-fast'))
-  assert.equal(plan.env.PI_CODING_AGENT_DIR, '/tmp/s/pi-agent')
+  assert.equal(plan.env.PI_CODING_AGENT_DIR, path.join('/tmp/s', 'pi-agent'))
   const config = JSON.parse(plan.files[0].contents)
   assert.equal(config.providers.coralbricks.apiKey, '$CORALBRICKS_API_KEY')
   assert.deepEqual(config.providers.coralbricks.models[0].input, ['text', 'image'])
-  assert.ok(plan.args.includes('/tmp/c/pi-sessions'))
+  assert.ok(plan.args.includes(path.join('/tmp/c', 'pi-sessions')))
 })
