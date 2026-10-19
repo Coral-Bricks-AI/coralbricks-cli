@@ -24,7 +24,7 @@ const ctx = (model: string, extraArgs: string[] = []): LaunchContext => ({
 
 test('models: chat models only, documented default first', () => {
   assert.deepEqual(models.map((m) => m.id), ['deepseek-v4.1-flash-fast', 'glm-5.3-fast'])
-  assert.equal(defaultModel(models), 'glm-5.3-fast')
+  assert.equal(defaultModel(models), 'deepseek-v4.1-flash-fast')
   assert.equal(displayName('deepseek-v4.1-flash-fast'), 'DeepSeek V4.1 Flash Fast')
   assert.equal(displayName('glm-5.3-fast'), 'GLM 5.3 Fast')
 })
