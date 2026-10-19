@@ -9,4 +9,4 @@ export const PROVIDER_ID = 'coralbricks'
 export const PROVIDER_NAME = 'CoralBricks'
 
 /** Used when the account's model list can't be read and nothing was picked with -m. */
-export const FALLBACK_MODEL = 'glm-5.3-fast'
+export const FALLBACK_MODEL = 'deepseek-v4.1-flash-fast'
