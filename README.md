@@ -1,7 +1,7 @@
 # coralbricks
 
-Open your coding agent on [CoralBricks](https://www.coralbricks.ai): fast open models (GLM 5.3,
-DeepSeek V4.1 Flash) with a 1M-token context, in the agent you already use. Your own agent
+Open your coding agent on [CoralBricks](https://www.coralbricks.ai): fast open models (DeepSeek V4.1
+Flash) with a 1M-token context, in the agent you already use. Your own agent
 config is never edited.
 
 ```bash
