@@ -2,6 +2,7 @@ import http from 'node:http'
 import readline from 'node:readline'
 import { CONSOLE_ROOT } from './constants.js'
 import { maskKey, writeStoredKey } from './credentials.js'
+import { detectAgent } from './agent.js'
 import { createHandoff, openHandoff, type Handoff } from './handoff.js'
 import { fetchModels, KeyRejectedError } from './models.js'
 import { banner, c, openBrowser, promptHidden } from './ui.js'
@@ -46,7 +47,8 @@ export async function login(opts: LoginOptions): Promise<number> {
 async function browserLogin(opts: LoginOptions): Promise<string | null> {
   const handoff = createHandoff()
   const server = opts.browser ? await listen(handoff) : null
-  const params = new URLSearchParams({ pk: handoff.publicKey, state: handoff.state, name: process.env.CORALBRICKS_DEVICE_NAME || 'Terminal' })
+  // `agent`: the coding agent running this login, by name only (agent.ts).
+  const params = new URLSearchParams({ pk: handoff.publicKey, state: handoff.state, name: process.env.CORALBRICKS_DEVICE_NAME || 'Terminal', agent: detectAgent() })
   if (server) params.set('port', String(server.port))
   const url = `${CONSOLE_ROOT}/cli/login?${params}`
   const opened = server ? await openBrowser(url) : false
