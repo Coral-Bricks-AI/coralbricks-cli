@@ -45,6 +45,11 @@ named `CLI (Terminal)` (or `$CORALBRICKS_DEVICE_NAME`) and seals it to this term
 HKDF-SHA256, AES-256-GCM), handing it back through a listener on `127.0.0.1` or as a code to
 paste. The key never crosses the network in the clear, and you can revoke it on the API Keys page.
 
+The address also carries the name of the coding agent running the login (`claude-code`, `codex`
+and so on), or `none`, so we can see which agents bring people to CoralBricks. Only that name is
+sent, never a variable's value; set `CORALBRICKS_AGENT` to name an agent we don't detect, or to
+`none` to send nothing.
+
 The key is stored at `~/.config/coralbricks/credentials.json` (mode 0600).
 `CORALBRICKS_API_KEY` in the environment, or `--api-key`, wins over it.
 
@@ -80,6 +85,7 @@ Session files live under `~/.cache/coralbricks/sessions` and are removed when th
 | `CORALBRICKS_DEVICE_NAME` | Name for the key `coralbricks login` creates |
 | `CORALBRICKS_INFERENCE_URL` | Inference endpoint (default `https://inference.coralbricks.ai`) |
 | `CORALBRICKS_CONSOLE_URL` | Console for `login` (default `https://www.coralbricks.ai`) |
+| `CORALBRICKS_AGENT` | Agent name `login` sends instead of the detected one; `none` sends no agent |
 | `NO_COLOR` | Plain output |
 
 Docs: https://www.coralbricks.ai/docs/cli
